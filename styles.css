@@ -280,7 +280,7 @@ footer{border-top:1px solid var(--line);padding-block:40px 48px}
 .band{background:var(--band) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='24' viewBox='0 0 120 24'%3E%3Cpath d='M0 12c15 0 15-8 30-8s15 8 30 8 15-8 30-8 15 8 30 8' fill='none' stroke='rgba(255,255,255,.06)' stroke-width='2'/%3E%3C/svg%3E") 0 0/120px 24px}
 /* CTA como el mar */
 .cta-band{background:var(--sea);color:#fff;position:relative;overflow:hidden}
-.cta-band::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--sun);opacity:.25}
+.cta-band::after{content:"";position:absolute;right:-50px;top:24px;width:200px;height:200px;border-radius:50%;background:var(--sun);opacity:.25}
 .cta-band .wrap{position:relative;z-index:1}
 /* tarjetas con aire de fachada encalada */
 .svc .ic,.avatar{border-radius:999px 999px 14px 14px}
