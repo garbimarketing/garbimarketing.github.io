@@ -2,23 +2,26 @@
    Layout: página única por bandas; hero asimétrico (titular + "brief" de proyecto),
    cabeceras de sección a la izquierda y contenido en rejilla. */
 :root{
-  --bg:#F5F6FA; --surface:#FFFFFF; --ink:#121633; --muted:#565C7A; --line:#DCDFEA;
-  --accent:#2F3CF5; --accent-ink:#FFFFFF; --sun:#FFC83D; --soft:#E8EAFE;
-  --band:#121633; --band-fg:#F5F6FA; --error:#C62F45;
+  --bg:#FBF9F4; --surface:#FFFFFF; --ink:#0B2A3F; --muted:#4F6676; --line:#E6E1D5;
+  --accent:#1565A6; --accent-ink:#FFFFFF; --sun:#F2B544; --soft:#E2EEF6;
+  --band:#0E3B5C; --band-fg:#F6F3EC; --error:#B8323F;
+  --sea:#2D8DB5; --sea-2:#7FC1DC; --sand:#F2E7CF; --wall:#FFFFFF; --wall-line:#D9D2C1; --roof:#C8643B;
   --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  --r:14px; --shadow:0 1px 0 rgba(18,22,51,.04),0 14px 34px -18px rgba(18,22,51,.28);
+  --r:16px; --shadow:0 1px 0 rgba(11,42,63,.04),0 16px 36px -20px rgba(11,42,63,.3);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0D1024;--surface:#151936;--ink:#EEF0FA;--muted:#A3A8C6;--line:#2A2F55;
-  --accent:#7680FF;--accent-ink:#0D1024;--sun:#FFCF57;--soft:#1D2250;--band:#1A1F45;--band-fg:#EEF0FA;--error:#FF7A8C;
-  --shadow:0 14px 34px -18px rgba(0,0,0,.65);color-scheme:dark}}
+  --bg:#0A1C2A;--surface:#102838;--ink:#EEF3F5;--muted:#9DB3C0;--line:#1F3D52;
+  --accent:#5FB2E3;--accent-ink:#0A1C2A;--sun:#F4C063;--soft:#13344A;--band:#0D3048;--band-fg:#EEF3F5;--error:#FF8A94;
+  --sea:#1E6E93;--sea-2:#2F8DB5;--sand:#22303A;--wall:#E9EEF0;--wall-line:#9FB0BA;--roof:#B95A36;
+  --shadow:0 16px 36px -20px rgba(0,0,0,.7);color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0D1024;--surface:#151936;--ink:#EEF0FA;--muted:#A3A8C6;--line:#2A2F55;
-  --accent:#7680FF;--accent-ink:#0D1024;--sun:#FFCF57;--soft:#1D2250;--band:#1A1F45;--band-fg:#EEF0FA;--error:#FF7A8C;
-  --shadow:0 14px 34px -18px rgba(0,0,0,.65);color-scheme:dark}
+  --bg:#0A1C2A;--surface:#102838;--ink:#EEF3F5;--muted:#9DB3C0;--line:#1F3D52;
+  --accent:#5FB2E3;--accent-ink:#0A1C2A;--sun:#F4C063;--soft:#13344A;--band:#0D3048;--band-fg:#EEF3F5;--error:#FF8A94;
+  --sea:#1E6E93;--sea-2:#2F8DB5;--sand:#22303A;--wall:#E9EEF0;--wall-line:#9FB0BA;--roof:#B95A36;
+  --shadow:0 16px 36px -20px rgba(0,0,0,.7);color-scheme:dark}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:84px;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -240,3 +243,53 @@ footer{border-top:1px solid var(--line);padding-block:40px 48px}
   .cta-band{padding-block:64px}
   .coords{text-align:left}
 }
+
+
+/* ===== Toque marítimo: cal, mar y aire indiano ===== */
+.hero{position:relative;padding-bottom:0;overflow:hidden;background:linear-gradient(180deg,var(--bg) 0%,var(--bg) 55%,color-mix(in srgb,var(--sea-2) 18%,var(--bg)) 100%)}
+.hero .hero-grid{padding-bottom:40px}
+.sun-disc{position:absolute;right:max(4vw,16px);top:40px;width:clamp(90px,14vw,180px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 40%,color-mix(in srgb,var(--sun) 85%,#fff),var(--sun));opacity:.35;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.scene{display:block;width:100%;height:auto;max-width:100%;margin-top:8px}
+.scene .wall{fill:var(--wall);stroke:var(--wall-line);stroke-width:1.2}
+.scene .door{fill:var(--accent)}
+.scene .win{fill:var(--accent);opacity:.85}
+.scene .roof{fill:var(--roof)}
+.scene .bell{fill:var(--sun)}
+.scene .palm{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;opacity:.75}
+.scene .frond{fill:var(--ink);opacity:.75}
+.scene .sand{fill:var(--sand)}
+.scene .sea1{fill:var(--sea-2)}
+.scene .sea2{fill:var(--sea)}
+.scene .foam{fill:none;stroke:var(--wall);stroke-width:2;stroke-linecap:round;opacity:.8}
+.scene .boat{fill:var(--wall);stroke:var(--ink);stroke-width:1.2}
+.scene .sail{fill:var(--wall);stroke:var(--ink);stroke-width:1.2}
+/* olas que separan secciones */
+.wave{display:block;width:100%;height:clamp(28px,4vw,56px);color:var(--band)}
+.wave path{fill:currentColor}
+.wave.flip{transform:scaleY(-1)}
+.wave.to-sea{color:var(--sea)}
+.wave.in-sea{background:var(--sea);color:var(--band)}
+#proceso{padding-top:70px}
+/* azulejo en el brief */
+.brief{overflow:hidden;padding-top:38px}
+.brief::before{content:"";position:absolute;inset:0 0 auto;height:14px;background:conic-gradient(from 45deg,var(--accent) 25%,transparent 0 50%,var(--accent) 0 75%,transparent 0) 0 0/14px 14px;opacity:.9}
+.stamp{bottom:16px;right:16px;transform:rotate(-5deg)}
+.brief{padding-bottom:84px}
+/* proceso: mar de fondo */
+.band{background:var(--band) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='24' viewBox='0 0 120 24'%3E%3Cpath d='M0 12c15 0 15-8 30-8s15 8 30 8 15-8 30-8 15 8 30 8' fill='none' stroke='rgba(255,255,255,.06)' stroke-width='2'/%3E%3C/svg%3E") 0 0/120px 24px}
+/* CTA como el mar */
+.cta-band{background:var(--sea);color:#fff;position:relative;overflow:hidden}
+.cta-band::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--sun);opacity:.25}
+.cta-band .wrap{position:relative;z-index:1}
+/* tarjetas con aire de fachada encalada */
+.svc .ic,.avatar{border-radius:999px 999px 14px 14px}
+.svc{border-radius:22px 22px var(--r) var(--r)}
+.audience li{border-top:4px solid var(--sea-2)}
+.why li{border-top-color:var(--accent)}
+.eyebrow{color:var(--sea)}
+.rot::after{background:var(--sun)}
+footer{background:var(--band);color:var(--band-fg);border-top:0}
+footer .foot p,footer .coords{color:color-mix(in srgb,var(--band-fg) 70%,transparent)}
+footer .brand small{color:color-mix(in srgb,var(--band-fg) 60%,transparent)}
+@media (max-width:640px){.sun-disc{top:20px;opacity:.25}.brief{padding-bottom:90px}}
