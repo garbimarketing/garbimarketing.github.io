@@ -71,3 +71,14 @@
   if(cta) io.observe(cta.querySelector(".hz-wrap")||cta);
   if(touch){document.querySelectorAll(".t-brand,.t-strat").forEach(function(el){io.observe(el);});}
 })();
+
+/* Branding: deslizador antes/después arrastrable */
+(function(){
+  var ba=document.querySelector(".t-brand .ba"); if(!ba) return;
+  var down=false;
+  function set(x){var r=ba.getBoundingClientRect();var p=Math.max(4,Math.min(96,(x-r.left)/r.width*100));ba.style.setProperty("--split",p+"%");}
+  ba.addEventListener("pointerdown",function(e){down=true;ba.classList.add("touched","dragging");set(e.clientX);try{ba.setPointerCapture(e.pointerId);}catch(_){}} );
+  ba.addEventListener("pointermove",function(e){if(down)set(e.clientX);});
+  function up(){down=false;ba.classList.remove("dragging");}
+  ba.addEventListener("pointerup",up);ba.addEventListener("pointercancel",up);
+})();
