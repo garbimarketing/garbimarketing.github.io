@@ -35,10 +35,10 @@
 (function(){
   var tile=document.querySelector(".t-redes"); if(!tile) return;
   var box=tile.querySelector(".hearts"); var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var likes=tile.querySelector(".ig-actions .heart"); var count=document.createElement("span"); count.className="likes"; count.textContent="Me gusta";
-  if(likes) likes.insertAdjacentElement("afterend",count);
+  var likeTxt=tile.querySelector(".ig-likes"); var liked=false;
   var timer=null;
   function burst(){
+    if(likeTxt&&!liked){liked=true;likeTxt.textContent="88 Me gusta";tile.classList.add("liked");}
     if(reduce||!box) return; clearInterval(timer); tile.classList.add("liking"); var n=0;
     timer=setInterval(function(){
       var s=document.createElement("span"); s.className="heart-fly";

@@ -337,7 +337,7 @@ textarea{min-height:110px;resize:vertical}
   .nav{height:72px}.menu.open{top:72px}
   .bento,.works{grid-template-columns:1fr}
   .t-redes,.t-brand,.t-cont,.t-digital,.t-ads,.t-strat,.w-xl,.w-tall,.w-md,.w-md + .w-md{grid-column:auto}
-  .t-redes{grid-template-columns:1fr}.phone{width:170px;justify-self:center}
+  .t-redes{grid-template-columns:1fr}
   .team{grid-template-columns:1fr}.person:nth-child(2){margin-top:0}
   .steps{grid-template-columns:1fr}
   .f2{grid-template-columns:1fr}
@@ -378,32 +378,34 @@ textarea{min-height:110px;resize:vertical}
 
 
 /* Redes: móvil con publicación + calendario */
-.social{position:relative;height:420px;width:300px}
-.phone{position:absolute;right:30px;top:0;width:220px;border-radius:30px;background:#FBFAF7;padding:14px 12px 16px;border:6px solid #0A1C2E;box-shadow:0 30px 44px -24px rgba(0,0,0,.65);display:grid;gap:9px;transform:rotate(3deg);transition:transform .45s ease}
-.ig-head{display:flex;align-items:center;gap:8px}
-.ig-head .av{width:28px;height:28px;border-radius:50%;padding:2px;background:conic-gradient(var(--sun),var(--electric),var(--sun))}
-.ig-head .av i{display:block;width:100%;height:100%;border-radius:50%;background:var(--night);border:2px solid #FBFAF7}
-.ig-name{font:600 11px/1.1 var(--f-display);color:var(--night);flex:1}
-.ig-name small{display:block;font-weight:400;font-size:9px;color:#7A8591}
-.dots{color:#7A8591;font-size:12px;letter-spacing:1px}
-.ig-stories{display:flex;gap:7px}
-.ig-stories span{width:30px;height:30px;border-radius:50%;padding:2px;background:#D9D3C6}
-.ig-stories span:first-child{background:var(--electric)}
-.ig-stories i{display:block;width:100%;height:100%;border-radius:50%;background:#EDE6D6;border:2px solid #FBFAF7}
-.ig-post{position:relative;aspect-ratio:1;border-radius:8px;background:var(--electric);overflow:hidden}
-.ig-post .loaf{position:absolute;right:-12%;bottom:-8%;width:78%;aspect-ratio:1.6;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;background:#E3B96A;box-shadow:inset -10px -8px 0 #C99543}
-.ig-post .loaf::before,.ig-post .loaf::after{content:"";position:absolute;top:24%;width:2px;height:42%;background:#B47E33;transform:rotate(28deg);border-radius:2px}
-.ig-post .loaf::before{left:34%}.ig-post .loaf::after{left:56%}
-.post-txt{position:absolute;left:10%;top:12%;font:700 20px/.95 var(--f-display);color:#F5F3ED;letter-spacing:-.02em}
-.post-txt em{font:400 26px/.9 var(--f-serif);font-style:italic;color:var(--sun)}
-.sticker{position:absolute;right:8%;top:8%;font:600 8.5px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;background:var(--sun);color:var(--night);padding:5px 7px;border-radius:999px;transform:rotate(8deg)}
-.ig-actions{display:flex;gap:10px;align-items:center}
-.ig-actions b{width:14px;height:14px;border:1.6px solid var(--night);border-radius:50%}
-.ig-actions .heart{border:0;background:#FF5A5F;border-radius:0;clip-path:path("M7 13C3 10 0 7.5 0 4.3 0 2 1.8 0 4 0c1.3 0 2.4.7 3 1.7C7.6.7 8.7 0 10 0c2.2 0 4 2 4 4.3 0 3.2-3 5.7-7 8.7z")}
-.ig-actions .send{border-radius:2px;transform:rotate(-20deg);width:13px;height:11px}
-.ig-actions .save{margin-left:auto;border-radius:2px 2px 0 0;width:11px}
-.phone .ln{background:#E2DDD2;height:6px}
-.cal{position:absolute;left:-14px;bottom:-14px;width:150px;background:var(--warm);color:var(--night);border-radius:14px;padding:12px 12px 10px;box-shadow:0 20px 30px -16px rgba(0,0,0,.55);transform:rotate(-4deg);transition:transform .45s ease}
+.social{position:relative;height:460px;width:300px}
+.phone{position:absolute;right:24px;top:0;width:228px;border-radius:34px;background:#fff;padding:10px 0 8px;border:7px solid #0B0F14;box-shadow:0 30px 44px -24px rgba(0,0,0,.65),0 0 0 1px #2a2f36;display:flex;flex-direction:column;transform:rotate(3deg);transition:transform .45s ease;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;color:#0B0F14}
+.phone svg{display:block;fill:currentColor}
+.sb{display:flex;justify-content:space-between;align-items:center;padding:0 16px 6px 18px;font-weight:600;font-size:10.5px;letter-spacing:-.01em}
+.sb-r{display:flex;gap:4px;align-items:center}.sb-r svg{height:8px;width:auto}
+.ig-bar{display:grid;grid-template-columns:20px 1fr 20px;align-items:center;padding:2px 8px 7px;border-bottom:.5px solid #DBDBDB}
+.ig-bar svg{width:17px;height:17px}.ig-bar b{text-align:center;font-size:11.5px;font-weight:700}
+.ig-head{display:flex;align-items:center;gap:7px;padding:7px 10px}
+.ig-head .av{width:26px;height:26px;border-radius:50%;padding:1.6px;background:conic-gradient(from 200deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5,#FEDA75)}
+.ig-head .av img,.ig-nav .me img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:1.6px solid #fff}
+.ig-name{font-weight:600;font-size:10.5px;line-height:1.15;flex:1}
+.ig-name small{display:block;font-weight:400;font-size:8.5px;color:#0B0F14}
+.dots{font-size:7px;letter-spacing:1px}
+.ig-post{position:relative;aspect-ratio:1;overflow:hidden;background:#EEE}
+.ig-post img{width:100%;height:100%;object-fit:cover;display:block}
+.ig-actions{display:flex;gap:11px;align-items:center;padding:8px 10px 4px}
+.ig-actions svg{width:17px;height:17px}
+.ig-actions .heart{fill:none;stroke:currentColor;stroke-width:1.9}
+.t-redes.liked .ig-actions .heart{fill:#FF3040;stroke:#FF3040}
+.ig-actions .save{margin-left:auto}
+.phone p{margin:0;padding:0 10px;font-size:9.5px;line-height:1.35;color:#0B0F14}
+.phone .ig-likes{font-weight:600;margin-bottom:2px}
+.ig-cap b{font-weight:600}.ig-cap span{color:#00376B}
+.phone .ig-more{color:#737373;margin-top:2px}
+.phone .ig-time{color:#737373;font-size:7.5px;margin-top:2px;letter-spacing:.02em}
+.ig-nav{display:flex;justify-content:space-between;align-items:center;padding:9px 18px 2px;margin-top:8px;border-top:.5px solid #DBDBDB}
+.ig-nav svg{width:16px;height:16px}.ig-nav .me{width:17px;height:17px;border-radius:50%;padding:1px;background:#0B0F14}
+.cal{position:absolute;left:-118px;bottom:-16px;width:132px;background:var(--warm);color:var(--night);border-radius:14px;padding:12px 12px 10px;box-shadow:0 20px 30px -16px rgba(0,0,0,.55);transform:rotate(-4deg);transition:transform .45s ease}
 .cal-t{display:block;font:500 9.5px/1.2 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:#52606D;margin-bottom:8px}
 .cal ul{display:grid;gap:6px}
 .cal li{display:flex;align-items:center;gap:8px;font:600 12px/1 var(--f-display)}
@@ -413,7 +415,7 @@ textarea{min-height:110px;resize:vertical}
 .t-redes:hover .phone{transform:rotate(0) translateY(-6px)}
 .t-redes:hover .cal{transform:rotate(-1deg) translateX(-6px)}
 
-@media (max-width:640px){.social{width:100%;max-width:320px;height:400px;justify-self:center}.phone{right:10px;width:200px}.cal{left:0}}
+@media (max-width:640px){.social{width:100%;max-width:320px;height:440px;justify-self:center}.phone{right:auto;left:50%;margin-left:-107px;width:214px}.cal{display:none}}
 
 .hero-foot{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;border-top:1px solid rgba(245,243,237,.14);margin-top:40px;padding-block:22px;font:500 12px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(245,243,237,.6);position:relative;z-index:1}
 .hero-foot .coords{margin-left:auto;color:#9CCAF0}
@@ -471,9 +473,8 @@ textarea{min-height:110px;resize:vertical}
 .ig-post .hearts{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
 .heart-fly{position:absolute;bottom:6%;width:18px;height:16px;background:#FF5A5F;clip-path:path("M9 16C4 12.5 0 9.5 0 5.2 0 2.3 2.2 0 5 0c1.7 0 3.1.9 4 2.2C9.9.9 11.3 0 13 0c2.8 0 5 2.3 5 5.2 0 4.3-4 7.3-9 10.8z");animation:fly 1.6s ease-out forwards}
 @keyframes fly{0%{transform:translateY(0) scale(.4);opacity:0}15%{opacity:1;transform:translateY(-10px) scale(1)}100%{transform:translate(var(--dx),-170px) scale(.8) rotate(var(--r));opacity:0}}
-.ig-actions .heart{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.ig-actions .heart{transition:transform .25s cubic-bezier(.3,1.6,.5,1),fill .2s}
 .t-redes.liking .ig-actions .heart{transform:scale(1.35)}
-.likes{font:600 10.5px/1 var(--f-display);color:var(--night);margin-left:-4px}
 
 /* Branding: antes y después */
 .ba{position:relative;height:200px;border-radius:14px;overflow:hidden;border:1px solid var(--line);--split:100%}
