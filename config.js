@@ -21,8 +21,5 @@ window.SITE_CONFIG = {
   // Ejemplo: "https://formspree.io/f/abcdwxyz"
   // Si lo dejas vacío, el formulario abrirá el correo del visitante
   // con el mensaje ya escrito y dirigido a tu email.
-  formEndpoint: "",
-
-  // Palabras que van cambiando en el titular
-  rotatingWords: []  // pon aquí palabras si algún día quieres que vuelva a cambiar
+  formEndpoint: ""
 };

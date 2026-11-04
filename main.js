@@ -37,21 +37,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Palabra rotativa del titular ---------- */
-  var rot = $("#rot"), words = C.rotatingWords || [];
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (rot && words.length > 1 && !reduce) {
-    var i = 0;
-    setInterval(function () {
-      rot.classList.add("out");
-      setTimeout(function () {
-        i = (i + 1) % words.length;
-        rot.textContent = words[i];
-        rot.classList.remove("out");
-      }, 350);
-    }, 2600);
-  }
-
   /* ---------- Copiar email / teléfono ---------- */
   function copyText(text, btn) {
     function ok() { var t = btn.textContent; btn.textContent = "Copiado"; setTimeout(function () { btn.textContent = t; }, 1600); }
