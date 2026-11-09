@@ -85,23 +85,52 @@
     if (again) again.addEventListener("click", function () { done.hidden = true; fields.hidden = false; });
   }
 
+  /* Validación campo a campo: el mensaje aparece debajo del campo que falla */
+  function fieldErr(id, msg) {
+    var input = $("#" + id), box = $("#e-" + id.replace("f-", ""));
+    if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
+    if (box) box.textContent = msg || "";
+    return !msg;
+  }
+  function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+  function isPhone(v) { return /^[+()\d\s.-]+$/.test(v) && v.replace(/\D/g, "").length >= 9; }
+  function check(id) {
+    var v = String(($("#" + id) || {}).value || "").trim();
+    if (id === "f-name") return fieldErr(id, v ? "" : "¿Cómo te llamas?");
+    if (id === "f-company") return fieldErr(id, v ? "" : "Dinos el nombre de tu negocio o a qué te dedicas.");
+    if (id === "f-email") return fieldErr(id, !v ? "Déjanos un correo o un teléfono para contestarte." : (isEmail(v) || isPhone(v)) ? "" : "Revisa el correo o el teléfono: parece que no está completo.");
+    if (id === "f-ok") return fieldErr(id, $("#f-ok").checked ? "" : "Necesitamos tu permiso para poder contestarte.");
+    return true;
+  }
+  ["f-name", "f-company", "f-email"].forEach(function (id) {
+    var el = $("#" + id);
+    el.addEventListener("blur", function () { if (el.value.trim()) check(id); });
+    el.addEventListener("input", function () { if (el.getAttribute("aria-invalid") === "true") check(id); });
+  });
+  $("#f-ok").addEventListener("change", function () { check("f-ok"); });
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     err.hidden = true;
+    var ids = ["f-name", "f-company", "f-email", "f-ok"], firstBad = null;
+    ids.forEach(function (id) { if (!check(id) && !firstBad) firstBad = id; });
+    if (firstBad) { $("#" + firstBad).focus(); return; }
     var d = new FormData(form);
     var name = String(d.get("nombre") || "").trim();
     var company = String(d.get("empresa") || "").trim();
-    var email = String(d.get("email") || "").trim();
-    if (!name || !company || !email) return showError("Rellena tu nombre, tu empresa y tu correo electrónico.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showError("Revisa el correo electrónico: parece que no está completo.");
+    var contact = String(d.get("contacto") || "").trim();
+    var goals = d.getAll("objetivos");
+    var msg = String(d.get("mensaje") || "").trim();
+    if (isEmail(contact)) d.append("_replyto", contact);
 
     if (mode === "none") {
       return showError("El formulario aún no está conectado. Mientras tanto, escríbenos por nuestras redes o vuelve en unos días.");
     }
 
     if (mode === "mailto") {
-      var body = "Hola, soy " + name + " de " + company + ".\n\nServicio de interés: " + d.get("servicio") +
-        "\n\n" + String(d.get("mensaje") || "").trim() + "\n\nMi correo: " + email;
+      var body = "Hola, soy " + name + " (" + company + ").\n\nMe interesa: " + d.get("servicio") +
+        (goals.length ? "\nMe gustaría: " + goals.join(", ") : "") +
+        (msg ? "\n\n" + msg : "") + "\n\nPodéis contactarme en: " + contact;
       var href = "mailto:" + C.email + "?subject=" + encodeURIComponent("Consulta de " + company) + "&body=" + encodeURIComponent(body);
       window.location.href = href;
       return showDone("Tu correo está listo",
@@ -115,7 +144,7 @@
       .then(function (r) {
         if (!r.ok) throw new Error("bad");
         form.reset();
-        showDone("¡Gracias, " + name + "!", "Hemos recibido tu consulta. Te responderemos lo antes posible para concertar una primera reunión.");
+        showDone("¡Gracias, " + name + "!", "Hemos recibido tu consulta. Te contestaremos nosotros para quedar y conocer tu negocio.");
       })
       .catch(function () {
         showError("No se ha podido enviar. Inténtalo de nuevo" + (C.email ? " o escríbenos a " + C.email : "") + ".");
